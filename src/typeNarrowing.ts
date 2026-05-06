@@ -44,13 +44,13 @@ function serve(chai: KulhadChai | CuttingChai) {
         // TypeScript uses type narrowing to determine that `chai` is an instance of `KulhadChai` within this block
         return chai.serve();
     }
-    if(chai instanceof CuttingChai) {
+    else if(chai instanceof CuttingChai) {
         // TypeScript uses type narrowing to determine that `chai` is an instance of `CuttingChai` within this block
         return chai.serve();
     }
 }
 
-// making own type
+// Define a custom type for a chai order
 type ChaiOrder ={
     type: string
     sugar:number
@@ -114,11 +114,11 @@ function brew(order: MasalaChai | GingerChai | ElaichiChai) {
         // TypeScript knows `order` is of type `MasalaChai`
         return `Brewing a ${order.type} chai with spice level ${order.spiceLevel}.`;
     }
-    if ("amount" in order) {
+    else if ("amount" in order) {
         // TypeScript knows `order` is of type `GingerChai`
         return `Brewing a ${order.type} chai with amount ${order.amount}.`;
     }
-    if ("aroma" in order) {
+    else if ("aroma" in order) {
         // TypeScript knows `order` is of type `ElaichiChai`
         return `Brewing a ${order.type} chai with aroma level ${order.aroma}.`;
     }
