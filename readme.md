@@ -34,5 +34,23 @@ unknown means: “I have a value, but I don’t know what type it is yet.”
 | --------- | ------------------------------ |
 | `any`     | “Do anything, I don’t care” 😅 |
 | `unknown` | “Check first, then use” 🧠     |
+
 --------------------------
+Type assertion:-
+When we want to make sure that the variable has a certain type. This can be done by using "as" keyword.
+eg : let age = 25 as number;
+
+for html element we use
+as HTMLInputElement
+
+for errors
+We have to put guardrail to check error is instance of Error class
+
+Exhaustive checking
+It is used to ensure that all possible cases have been handled and to prevent any unexpected behavior.
+give never suggestion when all checks are done.
+
+Never is used for functions that throw an error or have an infinite loop.
+eg like we use in listen for continous engaging user input
+
 
