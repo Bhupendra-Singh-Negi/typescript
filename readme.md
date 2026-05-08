@@ -70,3 +70,132 @@ for custom data type we have to make interface and then implement it in class.
 `Readonly property` cannot be changed after assignment.
 
 --------------------------------------------------------------------------------
+// Object Type Annotation// Aleaset's Object Type Annotation// Duck Typing
+// datatype split out into separate type and variable declaration
+// partial type annotation with type alias
+// Required properties with type alias
+// pick utility type with type alias
+// Omit utility type with type alias
+
+## 1. Object Type Annotation
+
+Defining the structure/type directly in a variable.
+
+```ts id="g8f6fy"
+let user: {
+  name: string;
+  age: number;
+}
+```
+
+---
+
+# 2. Alias/Object Type Annotation
+
+Creating a reusable custom type using `type`.
+
+# 3. Duck Typing
+
+If an object has the required properties+ additional properties, TypeScript accepts it.
+
+> “If it looks like a duck and behaves like a duck, it is a duck.”
+
+# 4. Datatype `Split` Out into Separate Type and Variable Declaration
+
+Type and variable are written separately for cleaner code. Which is use as property in another type
+
+# 5. Partial Type Annotation with Type Alias
+
+`Partial` makes all properties optional.
+
+```ts id="ow93bi"
+type User = {
+  name: string;
+  age: number;
+}
+
+type PartialUser = Partial<User>;
+```
+
+Becomes:
+
+```ts id="9qbv6w"
+{
+  name?: string;
+  age?: number;
+}
+```
+
+---
+
+# 6. Required Properties with Type Alias
+
+`Required` makes all properties mandatory.
+
+```ts id="ryb8b4"
+type User = {
+  name?: string;
+  age?: number;
+}
+
+type FullUser = Required<User>;
+```
+
+Becomes:
+
+```ts id="od0o42"
+{
+  name: string;
+  age: number;
+}
+```
+
+---
+
+# 7. Pick Utility Type with Type Alias
+
+`Pick` selects specific properties.
+
+```ts id="z7os8j"
+type User = {
+  name: string;
+  age: number;
+  email: string;
+}
+
+type UserInfo = Pick<User, "name" | "email">;
+```
+
+Becomes:
+
+```ts id="jlwmie"
+{
+  name: string;
+  email: string;
+}
+```
+
+---
+
+# 8. Omit Utility Type with Type Alias
+
+`Omit` removes specific properties.
+
+```ts id="94yv6w"
+type User = {
+  name: string;
+  age: number;
+  email: string;
+}
+
+type UserWithoutEmail = Omit<User, "email">;
+```
+
+Becomes:
+
+```ts id="0ycqwy"
+{
+  name: string;
+  age: number;
+}
+```
