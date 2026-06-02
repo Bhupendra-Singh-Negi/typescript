@@ -203,5 +203,146 @@ Becomes:
 ------------------------------------------------------
 
 
+# TypeScript Arrays, Tuples & Enums 
+
+## Arrays
+
+### Basic Arrays
+
+```ts
+const chaiFlavor: string[] = ["masala", "lemon", "ginger", "cardamom"];
+const chaiPrice: number[] = [10, 20, 30, 40];
+```
+
+### Generic Array
+
+```ts
+const rating: Array<number> = [5.0, 3.4, 4.3, 5.2];
+```
+
+### Array of Objects
+
+```ts
+type Chai = {
+  name: string;
+  price: number;
+};
+
+const menu: Chai[] = [
+  { name: "masala", price: 10 },
+  { name: "lemon", price: 20 }
+];
+```
+
+### Readonly Array
+
+```ts
+const cities: readonly string[] = ["Delhi", "Mumbai"];
+```
+
+* Cannot modify (`push`, `pop`, etc.)
+
+### 2D Array
+
+```ts
+const matrix: number[][] = [
+  [1, 2, 3],
+  [4, 5, 6]
+];
+```
+
+---
+
+## Tuples
+
+### Basic Tuple
+
+```ts
+let chaiTuple: [string, number];
+chaiTuple = ["masala", 10];
+```
+
+* Fixed order and types.
+
+### Optional Element
+
+```ts
+let chaiTuple2: [string, number, boolean?];
+```
+
+### Readonly Tuple
+
+```ts
+let chaiTuple3: readonly [string, number];
+```
+
+### Named Tuple
+
+```ts
+let chaiTuple4: [name: string, price: number];
+```
+
+### Tuple Pitfall
+
+```ts
+let t: [string, number] = ["masala", 10];
+t.push("extra value");
+```
+
+⚠️ Allowed at runtime, but not recommended.
+
+---
+
+## Enums
+
+### Numeric Enum
+
+```ts
+enum CupSize {
+  SMALL,
+  MEDIUM,
+  LARGE
+}
+```
+
+```ts
+CupSize.SMALL;  // 0
+CupSize.MEDIUM; // 1
+```
+
+### Custom + Auto Increment
+
+```ts
+enum Status {
+  PENDING = 100,
+  IN_PROGRESS, // 101
+  COMPLETED    // 102
+}
+```
+
+### String Enum
+
+```ts
+enum ChatModel {
+  CHATGPT = "chatgpt",
+  GEMINI = "gemini"
+}
+```
+
+```ts
+getChatModel(ChatModel.CHATGPT);
+```
+
+* Type-safe.
+* `getChatModel("chatgpt")` ❌
+
+### Heterogeneous Enum
+
+```ts
+enum MixedEnum {
+  ID = 1,
+  NAME = "John"
+}
+```
 
 
